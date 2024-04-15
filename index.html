@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple E-commerce Cart</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        .header {background-color: #f8f8f8; text-align: center; padding: 20px;}
+        .footer {background-color: #f8f8f8; text-align: center; padding: 20px; position: fixed; bottom: 0; width: 100%;}
+        .product-container {display: flex; justify-content: space-around; margin-top: 20px;}
+        .product {border: 1px solid #ddd; padding: 10px;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>My Shopping Site</h1>
+    </div>
+
+    <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for products..">
+
+    <div class="product-container" id="productContainer">
+        <div class="product">
+            <h2>Product 1</h2>
+            <p>Product 1 description</p>
+            <button>Add to cart</button>
+        </div>
+        <div class="product">
+            <h2>Product 2</h2>
+            <p>Product 2 description</p>
+            <button>Add to cart</button>
+        </div>
+        <div class="product">
+            <h2>Product 3</h2>
+            <p>Product 3 description</p>
+            <button>Add to cart</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright © 2024 My Shopping Site</p>
+    </div>
+
+    <script>
+        function searchFunction() {
+            var input, filter, productContainer, product, title, i, txtValue;
+            input = document.getElementById('searchBar');
+            filter = input.value.toUpperCase();
+            productContainer = document.getElementById('productContainer');
+            product = productContainer.getElementsByClassName('product');
+            for (i = 0; i < product.length; i++) {
+                title = product[i].getElementsByTagName('h2')[0];
+                txtValue = title.textContent || title.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    product[i].style.display = '';
+                } else {
+                    product[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
